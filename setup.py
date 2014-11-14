@@ -2,7 +2,7 @@
 Bulbs
 -----
 
-Bulbs is a Python persistence framework for graph databases that 
+Bulbs is a Python persistence framework for graph databases that
 connects to Neo4j Server, Rexster, OrientDB, Lightsocket, and more.
 
 """
@@ -53,7 +53,9 @@ def run_tests():
     return suite()
 
 # Python 3
-install_requires = ['distribute', 'httplib2>=0.7.2', 'pyyaml>=3.10', 'six', 'omnijson']
+install_requires = ['distribute', 'httplib2>=0.7.2', 'pyyaml>=3.10', 'six']
+if sys.version < '2.6':
+    install_requires.append('omnijson')
 if sys.version < '3':
     install_requires.append('python-dateutil==1.5')
 else:
@@ -72,12 +74,12 @@ setup (
     description = 'A Python persistence framework for graph databases that '
                   'connects to Neo4j Server, Rexster, OrientDB, Lightsocket.',
     long_description = __doc__,
-    keywords = "graph database DB persistence framework rexster gremlin cypher neo4j orientdb",   
+    keywords = "graph database DB persistence framework rexster gremlin cypher neo4j orientdb",
     packages = find_packages(),
     include_package_data=True,
     zip_safe=False,
     platforms='any',
-    install_requires=install_requires, 
+    install_requires=install_requires,
     classifiers = [
         "Programming Language :: Python",
         'Programming Language :: Python :: 3',
